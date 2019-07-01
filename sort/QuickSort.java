@@ -1,37 +1,34 @@
+package com.algorithm;
+
 public class QuickSort {
 
-    private static void QuickSort(int[] array,int start,int end)
-    {
-        if(start<end)
-        {
-            int key=array[start];//³õÊ¼»¯±£´æ»ùÔª
-            int i=start,j;//³õÊ¼»¯i,j
-            for(j=start+1;j<=end;j++)
-            {
-                if(array[j]<key)//Èç¹û´Ë´¦ÔªËØÐ¡ÓÚ»ùÔª£¬Ôò°Ñ´ËÔªËØºÍi+1´¦ÔªËØ½»»»£¬²¢½«i¼Ó1£¬Èç´óÓÚ»òµÈÓÚ»ùÔªÔò¼ÌÐøÑ­»·
+    private static void sort(int[] array, int start, int end) {
+        if (start < end) {
+            int key = array[start];// åˆå§‹åŒ–ä¿å­˜åŸºå…ƒ
+            int i = start, j;// åˆå§‹åŒ–i,j
+            for (j = start + 1; j <= end; j++) {
+                if (array[j] < key)// å¦‚æžœæ­¤å¤„å…ƒç´ å°äºŽåŸºå…ƒï¼Œåˆ™æŠŠæ­¤å…ƒç´ å’Œi+1å¤„å…ƒç´ äº¤æ¢ï¼Œå¹¶å°†iåŠ 1ï¼Œå¦‚å¤§äºŽæˆ–ç­‰äºŽåŸºå…ƒåˆ™ç»§ç»­å¾ªçŽ¯
                 {
-                    int temp=array[j];
-                    array[j]=array[i+1];
-                    array[i+1]=temp;
+                    int temp = array[j];
+                    array[j] = array[i + 1];
+                    array[i + 1] = temp;
                     i++;
                 }
-                
+
             }
-            array[start]=array[i];//½»»»i´¦ÔªËØºÍ»ùÔª
-            array[i]=key;
-            QuickSort(array, start, i-1);//µÝ¹éµ÷ÓÃ
-            QuickSort(array, i+1, end);
-            
-        }
-        
-    }
-    public static void main(String[] args)
-    {
-        int[] array=new int[]{11,213,134,44,77,78,23,43};
-        QuickSort(array, 0, array.length-1);
-        for(int i=0;i<array.length;i++)
-        {
-            System.out.println((i+1)+"th:"+array[i]);
+            array[start] = array[i];// äº¤æ¢iå¤„å…ƒç´ å’ŒåŸºå…ƒ
+            array[i] = key;
+            sort(array, start, i - 1);// é€’å½’è°ƒç”¨
+            sort(array, i + 1, end);
         }
     }
+
+    public static void main(String[] args) {
+        int[] array = new int[] { 11, 213, 134, 44, 77, 78, 23, 43 };
+        sort(array, 0, array.length - 1);
+        for (int i = 0; i < array.length; i++) {
+            System.out.println((i + 1) + "th:" + array[i]);
+        }
+    }
+
 }
