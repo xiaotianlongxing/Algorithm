@@ -1,0 +1,27 @@
+/**
+* Given “abcabcbb”, the answer is “abc”, which the length is 3.
+* Given “bbbbb”, the answer is “b”, with the length of 1.
+*
+*/
+import java.util.*;
+public class LengthOfLongestSubstring {
+    public int lengthOfLongestSubstring(String s) {
+        int maxLen = 0;
+        StringBuilder sub = new StringBuilder(s.length());
+        int fromIndex = 0;
+
+        for (int i = 0; i < s.length(); i ++){
+            char ch = s.charAt(i);
+            // 重复“字符”（字符串）的位置 
+            int index = sub.indexOf(ch+"", fromIndex);  
+            // 不断调整起始下标
+            if (index != -1) fromIndex = index+1;  
+            sub.append(ch);
+            // 总长度 - 起始下标 = 当前子字符串的长度
+            int len = sub.length() - fromIndex;  
+            if (maxLen < len) maxLen = len;
+        }
+
+        return maxLen;
+    }
+}
