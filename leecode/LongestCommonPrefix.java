@@ -1,3 +1,8 @@
+/**
+*最长公共前缀
+*输入: [“flower”,”flow”,”flight”] 
+*输出: “fl”
+**/
 public class LongestCommonPrefix {
     public String LongestCommonPrefix(String[] strs) {
         if (strs.length == 0)
